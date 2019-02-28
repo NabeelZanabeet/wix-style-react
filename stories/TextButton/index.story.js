@@ -21,11 +21,13 @@ import testkit from '!raw-loader!./testkit.md';
 import * as examples from './examples';
 import styles from './examples.scss';
 
+
 const liveCode = config =>
   baseLiveCode({
     previewProps: {
       className: styles.livePreview,
     },
+    compact: true,
     components: baseScope,
     ...config,
   });
