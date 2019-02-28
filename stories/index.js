@@ -122,11 +122,11 @@ import './GoogleAddressInput/index.story.js';
 import './components/Grid';
 import './Heading/index.story';
 import './Input/index.story';
-import './NumberInput/index.story';
 import './InputArea/index.story.js';
 import './Layout/index.story.js';
 import './Layout';
 import './components/MultiSelect/index.story';
+import './components/NumberInput/index.story';
 import './components/Page/PageExampleStories.js';
 import './components/Page/index.story.js';
 import './components/PageHeader/index.story.js';
@@ -148,7 +148,7 @@ import './Builders/ContactItemBuilder';
 // Tests
 import './Typography/TypographyTestStories';
 import './Input/InputTestStories';
-import './NumberInput/NumberInputTestStories';
+import './components/NumberInput/NumberInputTestStories';
 import './TimeInput/testStory';
 import './components/Page/PageTestStories.js'; // Tests/2. Layout/2.5 + Page/
 import './components/Page/PageTestStoriesDeprecated.js'; // Tests/2. Layout/2.5 + Page/Deprecated

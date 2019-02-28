@@ -1,11 +1,12 @@
 import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
-
+import { testkit } from '../Input/Input.uni.driver';
 import { tickerDriverFactory } from '../Input/Ticker/Ticker.uni.driver';
 
 export const numberInputDriverFactory = base => {
+  const getInputDriver = () =>
+    testkit(base.$('[data-hook="number-input-input"]'));
   const getTickerDriver = () =>
     tickerDriverFactory(base.$('[data-hook="number-input-ticker"]'));
-  const getInputElement = () => base.$('[data-hook="wsr-input"]');
   return {
     ...baseUniDriverFactory(base),
 
@@ -14,7 +15,7 @@ export const numberInputDriverFactory = base => {
     /** Click on ticker down */
     clickOnDecrement: () => getTickerDriver().clickDown(),
     /** Input value to component */
-    enterValue: value => getInputElement().enterValue(value),
-    getValue: () => getInputElement().value(),
+    enterValue: value => getInputDriver().enterValue(value),
+    getValue: () => getInputDriver().getValue(),
   };
 };

@@ -26,11 +26,11 @@ class NumberInput extends React.PureComponent {
   };
 
   _applyChange(operator) {
-    const { value, onChange, step } = this.props,
+    const { value, step } = this.props,
       numberValue = parseFloat(value || this.inputDOM.value) || 0,
       numberStep = step,
       updatedValue = operator(numberValue, numberStep);
-    if (onChange && this._isInRange(updatedValue)) {
+    if (this._isInRange(updatedValue)) {
       this._triggerOnChange(updatedValue);
     }
   }
@@ -47,7 +47,7 @@ class NumberInput extends React.PureComponent {
       writable: false,
       value: this.inputDOM,
     });
-    onChange(event);
+    onChange && onChange(event);
   }
 
   _getInputRef = ref => {
@@ -64,6 +64,7 @@ class NumberInput extends React.PureComponent {
     return (
       <div data-hook={dataHook}>
         <Input
+          dataHook="number-input-input"
           {...props}
           type="number"
           value={value}

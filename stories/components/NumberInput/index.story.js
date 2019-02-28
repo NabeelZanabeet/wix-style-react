@@ -7,7 +7,7 @@ import {
   testkit,
   playground,
 } from 'wix-storybook-utils/Sections';
-import { baseScope } from '../utils/Components/LiveCodeExample';
+import { baseScope } from '../../utils/Components/LiveCodeExample';
 import * as examples from './examples';
 
 import NumberInput from 'wix-style-react/NumberInput';
@@ -18,7 +18,7 @@ export default {
   category: storySettings.kind,
   storyName: storySettings.storyName,
   component: NumberInput,
-  componentPath: '../../src/NumberInput/NumberInput.js',
+  componentPath: '../../../src/NumberInput/NumberInput.js',
 
   componentProps: {
     step: 1,
@@ -35,7 +35,7 @@ export default {
       title: 'Usage',
       sections: [
         importExample({
-          source: "import NumberInput from 'wix-style-react/NumberInput'",
+          source: "import NumberInput from 'wix-style-react/NumberInput';",
         }),
         code({ title: 'Standard', source: examples.standard }),
         code({ title: 'Error', source: examples.error }),

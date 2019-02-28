@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { getTestStoryKind, Category } from '../storiesHierarchy';
+import { getTestStoryKind, Category } from '../../storiesHierarchy';
 
-import Input from '../../src/Input';
-import { NumberInput } from '../../src';
+import Input from '../../../src/Input';
+import { NumberInput } from '../../../src';
 import { testStories } from './storySettings';
 
 const defaultProps = {
