@@ -9,6 +9,5 @@ export const tickerDriverFactory = base => {
     clickDown: () => base.$(`.${styles.down}`).click(),
     isUpDisabled: () => base.$(`.${styles.up}`).hasClass(styles.disabled),
     isDownDisabled: () => base.$(`.${styles.down}`).hasClass(styles.disabled),
-    exists: () => base.exists(),
   };
 };

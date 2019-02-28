@@ -1,8 +1,7 @@
 import React from 'react';
 import Input from '../Input';
-import WixComponent from '../BaseComponents/WixComponent';
 
-class NumberInput extends WixComponent {
+class NumberInput extends React.PureComponent {
   static displayName = 'NumberInput';
 
   inputDOM;

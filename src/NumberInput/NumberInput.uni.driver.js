@@ -1,6 +1,6 @@
 import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 
-import { tickerDriverFactory } from '../Input/Ticker/Ticker.driver';
+import { tickerDriverFactory } from '../Input/Ticker/Ticker.uni.driver';
 
 export const numberInputDriverFactory = base => {
   const getTickerDriver = () =>

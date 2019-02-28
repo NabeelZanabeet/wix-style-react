@@ -1,4 +1,4 @@
-import { tickerDriverFactory as publicDriverFactory } from './Ticker.driver';
+import { tickerDriverFactory as publicDriverFactory } from './Ticker.uni.driver';
 
 export const tickerPrivateDriverFactory = base => {
   return {
