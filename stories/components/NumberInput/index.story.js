@@ -26,10 +26,6 @@ export default {
     max: 5,
   },
 
-  exampleProps: {
-    onChange: e => e.target.value,
-  },
-
   sections: [
     tab({
       title: 'Usage',

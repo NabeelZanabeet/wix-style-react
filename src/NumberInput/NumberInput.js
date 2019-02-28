@@ -4,7 +4,18 @@ import Input from '../Input';
 class NumberInput extends React.PureComponent {
   static displayName = 'NumberInput';
 
-  inputDOM;
+  state = {
+    value: '',
+  };
+
+  componentWillReceiveProps({ value }) {
+    this.setState(currentState => {
+      return {
+        ...currentState,
+        value: value || '',
+      };
+    });
+  }
 
   _isInRange(value) {
     const { min, max } = this.props;
@@ -37,18 +48,22 @@ class NumberInput extends React.PureComponent {
 
   _triggerOnChange(value) {
     const { onChange } = this.props;
-    const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
-      window.HTMLInputElement.prototype,
-      'value',
-    ).set;
-    nativeInputValueSetter.call(this.inputDOM, value);
-    const event = new Event('change', { bubbles: true });
-    Object.defineProperty(event, 'target', {
-      writable: false,
-      value: this.inputDOM,
-    });
-    onChange && onChange(event);
+    this.setState(
+      currentState => {
+        return {
+          ...currentState,
+          value,
+        };
+      },
+      () => {
+        onChange && onChange(this.state.value);
+      },
+    );
   }
+
+  _inputValueChanged = e => {
+    return this._triggerOnChange(e.target.value);
+  };
 
   _getInputRef = ref => {
     const { inputRef } = this.props;
@@ -59,7 +74,7 @@ class NumberInput extends React.PureComponent {
   };
 
   render() {
-    const { dataHook, suffix, value, onChange, ...props } = this.props;
+    const { dataHook, suffix, ...props } = this.props;
 
     return (
       <div data-hook={dataHook}>
@@ -67,8 +82,8 @@ class NumberInput extends React.PureComponent {
           dataHook="number-input-input"
           {...props}
           type="number"
-          value={value}
-          onChange={onChange}
+          value={this.state.value}
+          onChange={this._inputValueChanged}
           inputRef={this._getInputRef}
           suffix={
             <Input.Group>
