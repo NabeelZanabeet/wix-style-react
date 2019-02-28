@@ -28,7 +28,7 @@ import './AddItem/AddItem.story'; // 2.8 AddItem
 import './TextInput/index.story'; // 3.1. Text Input
 import './TextArea/index.story'; // 3.2 Text Area
 import './RichTextArea/index.story.js'; // 3.2b + RichTextArea
-import './NumberInput.ux/index.story.js'; // 3.4 TimeInput
+import './NumberInput/index.story.js'; // 3.4 TimeInput
 import './TimeInput/TimeInput.story.js'; // 3.4 TimeInput
 import './DatePicker.story.js'; // 3.6 DatePicker
 import './Range'; // 3.7 Range
