@@ -73,9 +73,31 @@ describe('NumberInput', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
+  it('should allow max value to equal 0', async () => {
+    const value = 0,
+      max = 0,
+      onChange = jest.fn();
+    const driver = createDriver(
+      <NumberInput onChange={onChange} value={value} max={max} />,
+    );
+    await driver.clickOnIncrement();
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
   it('should not allow decrementing below min value', async () => {
     const value = -1,
       min = -1,
+      onChange = jest.fn();
+    const driver = createDriver(
+      <NumberInput onChange={onChange} value={value} min={min} />,
+    );
+    await driver.clickOnDecrement();
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('should allow min value to equal 0', async () => {
+    const value = 0,
+      min = 0,
       onChange = jest.fn();
     const driver = createDriver(
       <NumberInput onChange={onChange} value={value} min={min} />,

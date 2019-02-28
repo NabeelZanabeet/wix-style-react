@@ -8,10 +8,10 @@ class NumberInput extends React.PureComponent {
 
   _isInRange(value) {
     const { min, max } = this.props;
-    if (min && value < min) {
+    if (!isNaN(min) && value < min) {
       return false;
     }
-    if (max && value > max) {
+    if (!isNaN(max) && value > max) {
       return false;
     }
     return true;
