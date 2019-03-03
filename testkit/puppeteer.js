@@ -75,7 +75,7 @@ export const proportionTestkitFactory = puppeteerUniTestkitFactoryCreator(
 /*
  * Component generator test component
  */
-import { generatedTestComponentDriverFactory } from '../src/GeneratedTestComponent/GeneratedTestComponent.driver';
+import { generatedTestComponentDriverFactory } from '../src/GeneratedTestComponent/GeneratedTestComponent.uni.driver';
 
 export const generatedTestComponentTestkitFactory = puppeteerUniTestkitFactoryCreator(
   generatedTestComponentDriverFactory,
@@ -121,6 +121,12 @@ import { richTextInputAreaDriverFactory } from '../src/RichTextInputArea/RichTex
 
 export const richTextInputAreaTestkitFactory = puppeteerUniTestkitFactoryCreator(
   richTextInputAreaDriverFactory,
+);
+
+import { richTextToolbarDriverFactory } from '../src/RichTextInputArea/RichTextToolbar.driver';
+
+export const richTextToolbarTestkitFactory = puppeteerUniTestkitFactoryCreator(
+  richTextToolbarDriverFactory,
 );
 
 import { floatingNotificationDriverFactory } from '../src/FloatingNotification/FloatingNotification.driver';
