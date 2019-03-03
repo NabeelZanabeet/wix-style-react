@@ -40,7 +40,10 @@ class {%ComponentName%} extends React.PureComponent {
         </Text>
 
         <div className={styles.button}>
-          <Button onClick={this._handleClick} dataHook="{%componentName%}-button">
+          <Button
+            onClick={this._handleClick}
+            dataHook="{%componentName%}-button"
+          >
             {buttonText}
           </Button>
         </div>

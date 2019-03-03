@@ -5,7 +5,9 @@ import {%ComponentName%} from './{%ComponentName%}';
 import { {%componentName%}PrivateDriverFactory } from './{%ComponentName%}.private.uni.driver';
 
 describe('{%ComponentName%}', () => {
-  const createDriver = createUniDriverFactory({%componentName%}PrivateDriverFactory);
+  const createDriver = createUniDriverFactory(
+    {%componentName%}PrivateDriverFactory,
+  );
 
   it('should render', async () => {
     const driver = createDriver(<{%ComponentName%} />);
@@ -26,9 +28,10 @@ describe('{%ComponentName%}', () => {
   });
 
   it('should allow changing the button text', async () => {
-    const driver = createDriver(<{%ComponentName%} buttonText="Press me" />);
+    const driver = createDriver(
+      <{%ComponentName%} buttonText="Press me" />,
+    );
 
     expect(await driver.getButtonText()).toEqual('Press me');
   });
 });
-
