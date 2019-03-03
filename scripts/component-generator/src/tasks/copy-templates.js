@@ -20,6 +20,7 @@ const createFileMap = ({ ComponentName, description, testComponent }) => {
       ? [
           'stories/components/Component/storySettings.js',
           'stories/components/Component/index.story.js',
+          'stories/components/Component/ComponentTestStories.js',
         ]
       : []),
   ];
@@ -72,6 +73,9 @@ module.exports = async answers => {
         'stories/components/Component/index.story.js': `stories/components/${
           answers.ComponentName
         }/index.story.js`,
+        'stories/components/Component/ComponentTestStories.js': `stories/components/${
+          answers.ComponentName
+        }/${answers.ComponentName}TestStories.js`,
       },
       valuesMap,
       'test-component',
