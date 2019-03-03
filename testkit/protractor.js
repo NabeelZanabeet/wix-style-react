@@ -432,7 +432,7 @@ export const colorInputTestkitFactory = protractorUniTestkitFactoryCreator(
   colorInputDriverFactory,
 );
 
-import { numberInputDriverFactory } from '../src/NumberInput/NumberInput.driver';
+import { numberInputDriverFactory } from '../src/NumberInput/NumberInput.uni.driver';
 
 export const numberInputTestkitFactory = protractorUniTestkitFactoryCreator(
   numberInputDriverFactory,
