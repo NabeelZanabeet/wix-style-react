@@ -22,9 +22,6 @@ const createFileMap = ({ ComponentName, description, testComponent }) => {
           'stories/components/Component/index.story.js',
         ]
       : []),
-
-    // Create README only if we have a description
-    ...(description ? ['src/Component/README.md'] : []),
   ];
 
   return filesToCopy.reduce((res, curr) => {
