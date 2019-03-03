@@ -1,14 +1,14 @@
 import React from 'react';
 import { storySettings } from './storySettings';
 
-import GeneratedTestComponent from '../../src/GeneratedTestComponent';
+import {%ComponentName%} from '../../../src/{%ComponentName%}';
 
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
 
-  component: GeneratedTestComponent,
-  componentPath: '../../src/GeneratedTestComponent/GeneratedTestComponent.js',
+  component: {%ComponentName%},
+  componentPath: '../../../src/{%ComponentName%}/{%ComponentName%}.js',
 
   componentProps: {
     dataHook: storySettings.dataHook,
@@ -22,8 +22,8 @@ export default {
 
   examples: (
     <div style={{ maxWidth: 627 }}>
-      <GeneratedTestComponent
-        dataHook="story-generated-test-component-live-example"
+      <{%ComponentName%}
+        dataHook="story-{%component-name%}-live-example"
         buttonText="Press me for a surprise"
       />
     </div>

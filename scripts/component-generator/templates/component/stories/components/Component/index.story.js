@@ -1,15 +1,15 @@
 import React from 'react';
 import { storySettings } from './storySettings';
-import LiveCodeExample from '../utils/Components/LiveCodeExample';
+import LiveCodeExample from '../../utils/Components/LiveCodeExample';
 
-import {%ComponentName%} from '../../src/{%ComponentName%}';
+import {%ComponentName%} from '../../../src/{%ComponentName%}';
 
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
 
   component: {%ComponentName%},
-  componentPath: '../../src/{%ComponentName%}/{%ComponentName%}.js',
+  componentPath: '../../../src/{%ComponentName%}/{%ComponentName%}.js',
 
   componentProps: {
     dataHook: storySettings.dataHook,
