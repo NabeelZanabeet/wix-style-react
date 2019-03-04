@@ -56,6 +56,7 @@ export default class SliderHandle extends Component {
   }
 
   render() {
+    const { disabled } = this.props;
     return (
       <div
         className={styles.handler}
@@ -63,18 +64,22 @@ export default class SliderHandle extends Component {
         onMouseLeave={this.handleMouseLeave}
         onMouseDown={this.handleMouseDown}
         onMouseUp={this.handleMouseUp}
+        data-hook="slider-handle"
         style={{ left: `${this.props.offset}%` }}
       >
         {this.state.showTooltip && (
-          <div className={styles.tooltip}>{this.props.value}</div>
+          <div data-hook="slider-tooltip" className={styles.tooltip}>
+            {this.props.value}
+          </div>
         )}
-        <div className={styles.handlerInner} />
+        <div {...styles('dot', { disabled })} />
       </div>
     );
   }
 }
 
 SliderHandle.propTypes = {
+  disabled: PropTypes.bool,
   displayTooltip: PropTypes.bool,
   offset: PropTypes.number,
   value: PropTypes.number,

@@ -1,7 +1,8 @@
 import ReactTestUtils from 'react-dom/test-utils';
 
 const sliderDriverFactory = ({ element }) => {
-  const $sliderHandles = () => element.querySelectorAll('.slider-handle');
+  const $sliderHandles = () =>
+    element.querySelectorAll('[data-hook="slider-handle"]');
   const $sliderDots = () => element.querySelectorAll('.rc-slider-dot');
 
   return {
@@ -13,7 +14,7 @@ const sliderDriverFactory = ({ element }) => {
     numOfSliderDots: () => $sliderDots().length,
     numOfSliderHandles: () => $sliderHandles().length,
     getToolTipValue: () => {
-      const tooltip = element.querySelector('.slider-tooltip');
+      const tooltip = element.querySelector('[data-hook="slider-tooltip"]');
       return tooltip && tooltip.innerHTML;
     },
     hoverHandle: ({ handleIndex }) => {
