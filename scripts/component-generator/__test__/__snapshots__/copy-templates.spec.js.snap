@@ -3,22 +3,28 @@
 exports[`copyTemplates should work as expected when description is not provided 1`] = `
 Object {
   "src/MyNewComponent/MyNewComponent.e2e.js": "import {
-  createStoryUrl,
   waitForVisibilityOf,
   scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 
 import { eyesItInstance } from '../../test/utils/eyes-it';
+import { createTestStoryUrl } from '../../test/utils/storybook-helpers';
 import { myNewComponentTestkitFactory } from '../../testkit/protractor';
-import { storySettings } from '../../stories/MyNewComponent/storySettings';
+import { storySettings } from '../../stories/components/MyNewComponent/storySettings';
 
 const eyes = eyesItInstance();
 
 describe('MyNewComponent', () => {
-  const storyUrl = createStoryUrl({
-    kind: storySettings.category,
-    story: storySettings.storyName,
-  });
+  
+  const createStoryUrl = testName => {
+    const {category, storyName} = storySettings;
+    
+    createTestStoryUrl({
+      category,
+      storyName,
+      testName: testName,
+    });
+  }
 
   const createDriver = async (dataHook = storySettings.dataHook) => {
     const driver = myNewComponentTestkitFactory({ dataHook });
@@ -33,16 +39,13 @@ describe('MyNewComponent', () => {
     return driver;
   };
 
-  beforeAll(async () => {
-    await browser.get(storyUrl);
-  });
+  const testStoryNames = storySettings.testStoryNames;
 
-  eyes.it('should render', async () => {
-    await createDriver();
-  });
-
-  eyes.it('should render live example', async () => {
-    await createDriver('story-my-new-component-live-example');
+  eyes.it('should increase count when button clicked', async () => {
+    await browser.get(createStoryUrl(testStoryNames.DEFAULT));
+    const driver = await createDriver();
+    await driver.clickButton();
+    expect(await driver.getCountText()).toBe('You clicked this button 1 times');
   });
 });
 ",
@@ -199,10 +202,11 @@ import { storySettings } from './storySettings';
 import MyNewComponent from '../../../src/MyNewComponent';
 
 const TestStories = storiesOf(getTestStoryKind(storySettings), module);
+const { testStoryNames, dataHook } = storySettings;
 
-TestStories.add('Test One', () => (
+TestStories.add(testStoryNames.DEFAULT, () => (
   <MyNewComponent
-    dataHook=\\"story-my-new-component-test-one\\"
+    dataHook={dataHook}
     buttonText=\\"Press me for a surprise\\"
   />
 ));
@@ -251,9 +255,11 @@ export default {
 
 export const storySettings = {
   category: Category.COMPONENTS,
-
   storyName: 'MyNewComponent',
   dataHook: 'story-my-new-component',
+  testStoryNames: {
+    DEFAULT: 'Render With Defaults',
+  },
 };
 ",
 }
@@ -262,22 +268,28 @@ export const storySettings = {
 exports[`copyTemplates should work as expected when description is provided 1`] = `
 Object {
   "src/MyNewComponent/MyNewComponent.e2e.js": "import {
-  createStoryUrl,
   waitForVisibilityOf,
   scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 
 import { eyesItInstance } from '../../test/utils/eyes-it';
+import { createTestStoryUrl } from '../../test/utils/storybook-helpers';
 import { myNewComponentTestkitFactory } from '../../testkit/protractor';
-import { storySettings } from '../../stories/MyNewComponent/storySettings';
+import { storySettings } from '../../stories/components/MyNewComponent/storySettings';
 
 const eyes = eyesItInstance();
 
 describe('MyNewComponent', () => {
-  const storyUrl = createStoryUrl({
-    kind: storySettings.category,
-    story: storySettings.storyName,
-  });
+  
+  const createStoryUrl = testName => {
+    const {category, storyName} = storySettings;
+    
+    createTestStoryUrl({
+      category,
+      storyName,
+      testName: testName,
+    });
+  }
 
   const createDriver = async (dataHook = storySettings.dataHook) => {
     const driver = myNewComponentTestkitFactory({ dataHook });
@@ -292,16 +304,13 @@ describe('MyNewComponent', () => {
     return driver;
   };
 
-  beforeAll(async () => {
-    await browser.get(storyUrl);
-  });
+  const testStoryNames = storySettings.testStoryNames;
 
-  eyes.it('should render', async () => {
-    await createDriver();
-  });
-
-  eyes.it('should render live example', async () => {
-    await createDriver('story-my-new-component-live-example');
+  eyes.it('should increase count when button clicked', async () => {
+    await browser.get(createStoryUrl(testStoryNames.DEFAULT));
+    const driver = await createDriver();
+    await driver.clickButton();
+    expect(await driver.getCountText()).toBe('You clicked this button 1 times');
   });
 });
 ",
@@ -460,10 +469,11 @@ import { storySettings } from './storySettings';
 import MyNewComponent from '../../../src/MyNewComponent';
 
 const TestStories = storiesOf(getTestStoryKind(storySettings), module);
+const { testStoryNames, dataHook } = storySettings;
 
-TestStories.add('Test One', () => (
+TestStories.add(testStoryNames.DEFAULT, () => (
   <MyNewComponent
-    dataHook=\\"story-my-new-component-test-one\\"
+    dataHook={dataHook}
     buttonText=\\"Press me for a surprise\\"
   />
 ));
@@ -512,9 +522,11 @@ export default {
 
 export const storySettings = {
   category: Category.COMPONENTS,
-
   storyName: 'MyNewComponent',
   dataHook: 'story-my-new-component',
+  testStoryNames: {
+    DEFAULT: 'Render With Defaults',
+  },
 };
 ",
 }
@@ -523,22 +535,28 @@ export const storySettings = {
 exports[`copyTemplates should work for test component 1`] = `
 Object {
   "src/MyTestComponent/MyTestComponent.e2e.js": "import {
-  createStoryUrl,
   waitForVisibilityOf,
   scrollToElement,
 } from 'wix-ui-test-utils/protractor';
 
 import { eyesItInstance } from '../../test/utils/eyes-it';
+import { createTestStoryUrl } from '../../test/utils/storybook-helpers';
 import { myTestComponentTestkitFactory } from '../../testkit/protractor';
-import { storySettings } from '../../stories/MyTestComponent/storySettings';
+import { storySettings } from '../../stories/components/MyTestComponent/storySettings';
 
 const eyes = eyesItInstance();
 
 describe('MyTestComponent', () => {
-  const storyUrl = createStoryUrl({
-    kind: storySettings.category,
-    story: storySettings.storyName,
-  });
+  
+  const createStoryUrl = testName => {
+    const {category, storyName} = storySettings;
+    
+    createTestStoryUrl({
+      category,
+      storyName,
+      testName: testName,
+    });
+  }
 
   const createDriver = async (dataHook = storySettings.dataHook) => {
     const driver = myTestComponentTestkitFactory({ dataHook });
@@ -553,16 +571,13 @@ describe('MyTestComponent', () => {
     return driver;
   };
 
-  beforeAll(async () => {
-    await browser.get(storyUrl);
-  });
+  const testStoryNames = storySettings.testStoryNames;
 
-  eyes.it('should render', async () => {
-    await createDriver();
-  });
-
-  eyes.it('should render live example', async () => {
-    await createDriver('story-my-test-component-live-example');
+  eyes.it('should increase count when button clicked', async () => {
+    await browser.get(createStoryUrl(testStoryNames.DEFAULT));
+    const driver = await createDriver();
+    await driver.clickButton();
+    expect(await driver.getCountText()).toBe('You clicked this button 1 times');
   });
 });
 ",
@@ -719,10 +734,11 @@ import { storySettings } from './storySettings';
 import MyTestComponent from '../../../src/MyTestComponent';
 
 const TestStories = storiesOf(getTestStoryKind(storySettings), module);
+const { testStoryNames, dataHook } = storySettings;
 
-TestStories.add('Test One', () => (
+TestStories.add(testStoryNames.DEFAULT, () => (
   <MyTestComponent
-    dataHook=\\"story-my-test-component-test-one\\"
+    dataHook={dataHook}
     buttonText=\\"Press me for a surprise\\"
   />
 ));
@@ -765,6 +781,9 @@ export const storySettings = {
   category: TESTS_PREFIX,
   storyName: 'MyTestComponent',
   dataHook: 'story-my-test-component',
+  testStoryNames: {
+    DEFAULT: 'Render With Defaults',
+  },
 };
 ",
 }
