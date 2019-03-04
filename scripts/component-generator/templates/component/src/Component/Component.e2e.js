@@ -11,16 +11,15 @@ import { storySettings } from '../../stories/components/{%ComponentName%}/storyS
 const eyes = eyesItInstance();
 
 describe('{%ComponentName%}', () => {
-  
   const createStoryUrl = testName => {
-    const {category, storyName} = storySettings;
-    
+    const { category, storyName } = storySettings;
+
     createTestStoryUrl({
       category,
       storyName,
-      testName: testName,
+      testName,
     });
-  }
+  };
 
   const createDriver = async (dataHook = storySettings.dataHook) => {
     const driver = {%componentName%}TestkitFactory({ dataHook });
