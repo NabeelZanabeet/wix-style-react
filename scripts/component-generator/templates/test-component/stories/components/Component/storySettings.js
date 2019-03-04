@@ -4,7 +4,7 @@ export const storySettings = {
   category: TESTS_PREFIX,
   storyName: '{%ComponentName%}',
   dataHook: 'story-{%component-name%}',
-  testStories: {
+  testStoryNames: {
     DEFAULT: 'Render With Defaults',
   },
 };
