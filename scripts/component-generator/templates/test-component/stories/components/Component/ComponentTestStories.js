@@ -6,10 +6,11 @@ import { storySettings } from './storySettings';
 import {%ComponentName%} from '../../../src/{%ComponentName%}';
 
 const TestStories = storiesOf(getTestStoryKind(storySettings), module);
+const { testStories: stories, dataHook } = storySettings;
 
-TestStories.add('Test One', () => (
+TestStories.add(stories.DEFAULT, () => (
   <{%ComponentName%}
-    dataHook="story-{%component-name%}-test-one"
+    dataHook={dataHook}
     buttonText="Press me for a surprise"
   />
 ));
