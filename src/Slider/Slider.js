@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Range } from 'rc-slider';
+import Slide from 'rc-slider';
 import uniqueId from 'lodash/uniqueId';
 import SliderHandle from './SliderHandle';
 import classNames from 'classnames';
@@ -44,33 +44,83 @@ export default class Slider extends Component {
     }, {});
   }
 
-  render() {
+  renderRanger() {
     const marks = this.props.displayMarks ? this.getMarks() : {};
-    const { dataHook } = this.props;
+    const {
+      displayTooltip,
+      min,
+      max,
+      value,
+      step,
+      pushable,
+      onChange,
+      onAfterChange,
+      allowCross,
+    } = this.props;
+    return (
+      <Slide.Range
+        handle={props => (
+          <SliderHandle
+            key={props.index}
+            displayTooltip={displayTooltip}
+            {...props}
+          />
+        )}
+        min={min}
+        max={max}
+        value={value}
+        marks={marks}
+        step={step}
+        pushable={pushable}
+        onChange={onChange}
+        onAfterChange={onAfterChange}
+        allowCross={allowCross}
+      />
+    );
+  }
+
+  renderSlider() {
+    const marks = this.props.displayMarks ? this.getMarks() : {};
+    const {
+      displayTooltip,
+      min,
+      max,
+      value,
+      step,
+      onChange,
+      onAfterChange,
+    } = this.props;
+    return (
+      <Slide
+        handle={props => (
+          <SliderHandle
+            key={props.index}
+            displayTooltip={displayTooltip}
+            {...props}
+          />
+        )}
+        min={min}
+        max={max}
+        value={value}
+        marks={marks}
+        step={step}
+        onChange={onChange}
+        onAfterChange={onAfterChange}
+      />
+    );
+  }
+
+  render() {
+    const { dataHook, value } = this.props;
     return (
       <div
         className={classNames('wix-slider', { rtl: this.props.rtl })}
         id={this.props.id}
         data-hook={dataHook}
       >
-        <Range
-          handle={props => (
-            <SliderHandle
-              key={props.index}
-              displayTooltip={this.props.displayTooltip}
-              {...props}
-            />
-          )}
-          min={this.props.min}
-          max={this.props.max}
-          value={this.props.value}
-          marks={marks}
-          step={this.props.step}
-          pushable={this.props.pushable}
-          onChange={this.props.onChange}
-          onAfterChange={this.props.onAfterChange}
-          allowCross={this.props.allowCross}
-        />
+        {Array.isArray(value) && value.length > 1
+          ? this.renderRanger()
+          : this.renderSlider()}
       </div>
     );
   }

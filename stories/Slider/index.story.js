@@ -1,18 +1,32 @@
 import React from 'react';
-import { tab, description, api, testkit } from 'wix-storybook-utils/Sections';
-
-import CodeExample from 'wix-storybook-utils/CodeExample';
+import {
+  tabs,
+  tab,
+  description,
+  api,
+  testkit,
+  importExample,
+  header,
+  columns,
+  divider,
+  code as baseLiveCode,
+} from 'wix-storybook-utils/Sections';
+import { baseScope } from '../utils/Components/LiveCodeExample';
+import * as examples from './examples';
 
 import Slider from 'wix-style-react/Slider';
 
-import ExampleStandard from './ExampleStandard';
-import ExampleStandardRaw from '!raw-loader!./ExampleStandard';
+const liveCode = config =>
+  baseLiveCode({
+    compact: true,
+    components: { ...baseScope },
+    ...config,
+  });
 
-import ExampleControlled from './ExampleControlled';
-import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
-
-import ExampleRtl from './ExampleRtl';
-import ExampleRtlRaw from '!raw-loader!./ExampleRtl';
+const example = ({ title, text, source }) =>
+  columns({
+    items: [description({ title, text }), liveCode({ source })],
+  });
 
 export default {
   category: '4. Selection',
@@ -22,39 +36,72 @@ export default {
   componentPath: '../../src/Slider',
 
   sections: [
-    tab({
-      title: 'Examples',
-      sections: [
-        description({
-          text: (
-            <div>
-              <CodeExample title="Standard" code={ExampleStandardRaw}>
-                <ExampleStandard />
-              </CodeExample>
+    header({
+      component: (
+        <div style={{ width: '50%', padding: '10px' }}>
+          <Slider
+            onChange={() => {}}
+            value={4}
+            displayMarks={false}
+            displayTooltip={false}
+          />
+        </div>
+      ),
 
-              <CodeExample title="Standard RTL" code={ExampleRtlRaw}>
-                <ExampleRtl />
-              </CodeExample>
+      issueUrl: 'https://github.com/wix/wix-style-react/issues/new',
+    }),
 
-              <CodeExample title="Controlled input" code={ExampleControlledRaw}>
-                <ExampleControlled />
-              </CodeExample>
-            </div>
-          ),
+    tabs({
+      tabs: [
+        tab({
+          title: 'Description',
+          sections: [
+            description({
+              text: `🐍 Sliders allow users to make selections from a range of values.`,
+            }),
+
+            importExample({
+              source: "import Slider from 'wix-style-react/Slider';",
+            }),
+
+            description({
+              title: 'Usage',
+              text: `Slider is controlled component. User needs to control Slider's state.`,
+            }),
+
+            divider(),
+            columns({
+              items: [
+                description({
+                  text: '### Examples',
+                }),
+                description(),
+              ],
+            }),
+
+            ...[
+              {
+                title: 'Single Slider',
+                source: examples.plainExample,
+              },
+              {
+                title: 'Multi Slider',
+                source: examples.rangeSlider,
+              },
+            ].map(example),
+          ],
+        }),
+
+        tab({
+          title: 'API',
+          sections: [api()],
+        }),
+
+        tab({
+          title: 'Testkit',
+          sections: [testkit()],
         }),
       ],
     }),
-
-    ...[
-      {
-        title: 'API',
-        sections: [api()],
-      },
-
-      {
-        title: 'Testkit',
-        sections: [testkit()],
-      },
-    ].map(tab),
   ],
 };
