@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './SliderHandle.scss';
 
+import styles from './SliderHandle.st.css';
+
 export default class SliderHandle extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +17,7 @@ export default class SliderHandle extends Component {
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
+    this.clickFocus = this.clickFocus.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +27,8 @@ export default class SliderHandle extends Component {
   componentWillUnmount() {
     document.removeEventListener('mouseup', this.handleMouseUp);
   }
+
+  clickFocus() {}
 
   handleMouseUp() {
     this.toggleTooltip(false);
@@ -53,17 +58,17 @@ export default class SliderHandle extends Component {
   render() {
     return (
       <div
+        className={styles.handler}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         onMouseDown={this.handleMouseDown}
         onMouseUp={this.handleMouseUp}
-        className="slider-handle"
         style={{ left: `${this.props.offset}%` }}
       >
         {this.state.showTooltip && (
-          <div className="slider-tooltip">{this.props.value}</div>
+          <div className={styles.tooltip}>{this.props.value}</div>
         )}
-        <div className="slider-handle-inner" />
+        <div className={styles.handlerInner} />
       </div>
     );
   }

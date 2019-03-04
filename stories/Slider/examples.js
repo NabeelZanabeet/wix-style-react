@@ -3,7 +3,7 @@ class SliderWithState extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: '3',
+      value: 3,
     };
     this.change = this.change.bind(this);
   }

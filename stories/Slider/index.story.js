@@ -8,7 +8,9 @@ import {
   importExample,
   header,
   columns,
+  title,
   divider,
+  playground,
   code as baseLiveCode,
 } from 'wix-storybook-utils/Sections';
 import { baseScope } from '../utils/Components/LiveCodeExample';
@@ -19,14 +21,12 @@ import Slider from 'wix-style-react/Slider';
 const liveCode = config =>
   baseLiveCode({
     compact: true,
-    components: { ...baseScope },
+    components: baseScope,
     ...config,
   });
 
 const example = ({ title, text, source }) =>
-  columns({
-    items: [description({ title, text }), liveCode({ source })],
-  });
+  columns([description({ title, text }), liveCode({ source })]);
 
 export default {
   category: '4. Selection',
@@ -51,57 +51,56 @@ export default {
       issueUrl: 'https://github.com/wix/wix-style-react/issues/new',
     }),
 
-    tabs({
-      tabs: [
-        tab({
-          title: 'Description',
-          sections: [
-            description({
-              text: `🐍 Sliders allow users to make selections from a range of values.`,
-            }),
+    tabs([
+      tab({
+        title: 'Description',
+        sections: [
+          description(
+            `🐍 Sliders allow users to make selections from a range of values.`,
+          ),
 
-            importExample({
-              source: "import Slider from 'wix-style-react/Slider';",
-            }),
+          importExample({
+            source: "import Slider from 'wix-style-react/Slider';",
+          }),
 
-            description({
-              title: 'Usage',
-              text: `Slider is controlled component. User needs to control Slider's state.`,
-            }),
+          description({
+            title: 'Usage',
+            text: `Slider is controlled component. User needs to control Slider's state.`,
+          }),
 
-            divider(),
-            columns({
-              items: [
-                description({
-                  text: '### Examples',
-                }),
-                description(),
-              ],
-            }),
+          divider(),
 
-            ...[
-              {
-                title: 'Single Slider',
-                source: examples.plainExample,
-              },
-              {
-                title: 'Multi Slider',
-                source: examples.rangeSlider,
-              },
-            ].map(example),
-          ],
-        }),
+          title('Examples'),
 
-        tab({
-          title: 'API',
-          sections: [api()],
-        }),
+          ...[
+            {
+              title: 'Single Value',
+              text: 'Single value slider.',
+              source: examples.plainExample,
+            },
+            {
+              title: 'Multi Value',
+              text: 'Usually used for user to select the range.',
+              source: examples.rangeSlider,
+            },
+          ].map(example),
+        ],
+      }),
 
-        tab({
-          title: 'Testkit',
-          sections: [testkit()],
-        }),
-      ],
-    }),
+      tab({
+        title: 'API',
+        sections: [api()],
+      }),
+
+      tab({
+        title: 'Testkit',
+        sections: [testkit()],
+      }),
+
+      tab({
+        title: 'Playground',
+        sections: [playground()],
+      }),
+    ]),
   ],
 };
