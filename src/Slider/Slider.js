@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { oneOfType, arrayOf, number } from 'prop-types';
 import Slide from 'rc-slider';
 import uniqueId from 'lodash/uniqueId';
 import SliderHandle from './SliderHandle';
@@ -101,7 +101,7 @@ export default class Slider extends Component {
         )}
         min={min}
         max={max}
-        value={value}
+        value={Array.isArray(value) ? value[0] : value}
         marks={marks}
         step={step}
         onChange={onChange}
@@ -162,7 +162,7 @@ Slider.propTypes = {
   pushable: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 
   /** The slider's selected range */
-  value: PropTypes.arrayOf(PropTypes.number),
+  value: oneOfType([arrayOf(PropTypes.number), number]),
 };
 
 Slider.defaultProps = {
