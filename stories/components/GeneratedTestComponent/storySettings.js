@@ -5,6 +5,6 @@ export const storySettings = {
   storyName: 'GeneratedTestComponent',
   dataHook: 'story-generated-test-component',
   testStoryNames: {
-    DEFAULT: 'Render With Defaults',
+    DEFAULT: 'Default',
   },
 };
