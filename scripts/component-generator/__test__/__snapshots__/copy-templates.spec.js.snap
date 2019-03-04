@@ -53,6 +53,7 @@ import styles from './MyNewComponent.scss';
 import Text from '../Text';
 import Button from '../Button';
 
+
 class MyNewComponent extends React.PureComponent {
   static displayName = 'MyNewComponent';
 
@@ -88,7 +89,10 @@ class MyNewComponent extends React.PureComponent {
         </Text>
 
         <div className={styles.button}>
-          <Button onClick={this._handleClick} dataHook=\\"myNewComponent-button\\">
+          <Button
+            onClick={this._handleClick}
+            dataHook=\\"myNewComponent-button\\"
+          >
             {buttonText}
           </Button>
         </div>
@@ -134,7 +138,9 @@ import MyNewComponent from './MyNewComponent';
 import { myNewComponentPrivateDriverFactory } from './MyNewComponent.private.uni.driver';
 
 describe('MyNewComponent', () => {
-  const createDriver = createUniDriverFactory(myNewComponentPrivateDriverFactory);
+  const createDriver = createUniDriverFactory(
+    myNewComponentPrivateDriverFactory,
+  );
 
   it('should render', async () => {
     const driver = createDriver(<MyNewComponent />);
@@ -155,12 +161,13 @@ describe('MyNewComponent', () => {
   });
 
   it('should allow changing the button text', async () => {
-    const driver = createDriver(<MyNewComponent buttonText=\\"Press me\\" />);
+    const driver = createDriver(
+      <MyNewComponent buttonText=\\"Press me\\" />,
+    );
 
     expect(await driver.getButtonText()).toEqual('Press me');
   });
 });
-
 ",
   "src/MyNewComponent/MyNewComponent.uni.driver.js": "import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 
@@ -169,30 +176,49 @@ export const myNewComponentDriverFactory = base => {
     ...baseUniDriverFactory(base),
 
     /** Get the current count */
-    getCountText: async () => base.$('[data-hook=\\"myNewComponent-count\\"]').text(),
+    getCountText: async () =>
+      base.$('[data-hook=\\"myNewComponent-count\\"]').text(),
 
     /** Click the button */
-    clickButton: async () => base.$('[data-hook=\\"myNewComponent-button\\"]').click(),
+    clickButton: async () =>
+      base.$('[data-hook=\\"myNewComponent-button\\"]').click(),
 
     /** Get the button's text */
-    getButtonText: async () => base.$('[data-hook=\\"myNewComponent-button\\"]').text(),
+    getButtonText: async () =>
+      base.$('[data-hook=\\"myNewComponent-button\\"]').text(),
   };
 };
 ",
   "src/MyNewComponent/index.js": "export { default } from './MyNewComponent.js';
 ",
-  "stories/MyNewComponent/index.story.js": "import React from 'react';
+  "stories/components/MyNewComponent/MyNewComponentTestStories.js": "import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { getTestStoryKind } from '../../storiesHierarchy';
 import { storySettings } from './storySettings';
-import LiveCodeExample from '../utils/Components/LiveCodeExample';
 
-import MyNewComponent from '../../src/MyNewComponent';
+import MyNewComponent from '../../../src/MyNewComponent';
+
+const TestStories = storiesOf(getTestStoryKind(storySettings), module);
+
+TestStories.add('Test One', () => (
+  <MyNewComponent
+    dataHook=\\"story-my-new-component-test-one\\"
+    buttonText=\\"Press me for a surprise\\"
+  />
+));
+",
+  "stories/components/MyNewComponent/index.story.js": "import React from 'react';
+import { storySettings } from './storySettings';
+import LiveCodeExample from '../../utils/Components/LiveCodeExample';
+
+import MyNewComponent from '../../../src/MyNewComponent';
 
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
 
   component: MyNewComponent,
-  componentPath: '../../src/MyNewComponent/MyNewComponent.js',
+  componentPath: '../../../src/MyNewComponent/MyNewComponent.js',
 
   componentProps: {
     dataHook: storySettings.dataHook,
@@ -221,7 +247,7 @@ export default {
 };
 
 ",
-  "stories/MyNewComponent/storySettings.js": "import { Category } from '../storiesHierarchy';
+  "stories/components/MyNewComponent/storySettings.js": "import { Category } from '../../storiesHierarchy';
 
 export const storySettings = {
   category: Category.COMPONENTS,
@@ -286,6 +312,9 @@ import styles from './MyNewComponent.scss';
 import Text from '../Text';
 import Button from '../Button';
 
+/**
+ * This is a very cool component, ya'll
+ */
 class MyNewComponent extends React.PureComponent {
   static displayName = 'MyNewComponent';
 
@@ -321,7 +350,10 @@ class MyNewComponent extends React.PureComponent {
         </Text>
 
         <div className={styles.button}>
-          <Button onClick={this._handleClick} dataHook=\\"myNewComponent-button\\">
+          <Button
+            onClick={this._handleClick}
+            dataHook=\\"myNewComponent-button\\"
+          >
             {buttonText}
           </Button>
         </div>
@@ -367,7 +399,9 @@ import MyNewComponent from './MyNewComponent';
 import { myNewComponentPrivateDriverFactory } from './MyNewComponent.private.uni.driver';
 
 describe('MyNewComponent', () => {
-  const createDriver = createUniDriverFactory(myNewComponentPrivateDriverFactory);
+  const createDriver = createUniDriverFactory(
+    myNewComponentPrivateDriverFactory,
+  );
 
   it('should render', async () => {
     const driver = createDriver(<MyNewComponent />);
@@ -388,12 +422,13 @@ describe('MyNewComponent', () => {
   });
 
   it('should allow changing the button text', async () => {
-    const driver = createDriver(<MyNewComponent buttonText=\\"Press me\\" />);
+    const driver = createDriver(
+      <MyNewComponent buttonText=\\"Press me\\" />,
+    );
 
     expect(await driver.getButtonText()).toEqual('Press me');
   });
 });
-
 ",
   "src/MyNewComponent/MyNewComponent.uni.driver.js": "import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 
@@ -402,34 +437,49 @@ export const myNewComponentDriverFactory = base => {
     ...baseUniDriverFactory(base),
 
     /** Get the current count */
-    getCountText: async () => base.$('[data-hook=\\"myNewComponent-count\\"]').text(),
+    getCountText: async () =>
+      base.$('[data-hook=\\"myNewComponent-count\\"]').text(),
 
     /** Click the button */
-    clickButton: async () => base.$('[data-hook=\\"myNewComponent-button\\"]').click(),
+    clickButton: async () =>
+      base.$('[data-hook=\\"myNewComponent-button\\"]').click(),
 
     /** Get the button's text */
-    getButtonText: async () => base.$('[data-hook=\\"myNewComponent-button\\"]').text(),
+    getButtonText: async () =>
+      base.$('[data-hook=\\"myNewComponent-button\\"]').text(),
   };
 };
 ",
-  "src/MyNewComponent/README.md": "# \`<MyNewComponent/>\`
-
-> This is a very cool component, ya'll
-",
   "src/MyNewComponent/index.js": "export { default } from './MyNewComponent.js';
 ",
-  "stories/MyNewComponent/index.story.js": "import React from 'react';
+  "stories/components/MyNewComponent/MyNewComponentTestStories.js": "import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { getTestStoryKind } from '../../storiesHierarchy';
 import { storySettings } from './storySettings';
-import LiveCodeExample from '../utils/Components/LiveCodeExample';
 
-import MyNewComponent from '../../src/MyNewComponent';
+import MyNewComponent from '../../../src/MyNewComponent';
+
+const TestStories = storiesOf(getTestStoryKind(storySettings), module);
+
+TestStories.add('Test One', () => (
+  <MyNewComponent
+    dataHook=\\"story-my-new-component-test-one\\"
+    buttonText=\\"Press me for a surprise\\"
+  />
+));
+",
+  "stories/components/MyNewComponent/index.story.js": "import React from 'react';
+import { storySettings } from './storySettings';
+import LiveCodeExample from '../../utils/Components/LiveCodeExample';
+
+import MyNewComponent from '../../../src/MyNewComponent';
 
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
 
   component: MyNewComponent,
-  componentPath: '../../src/MyNewComponent/MyNewComponent.js',
+  componentPath: '../../../src/MyNewComponent/MyNewComponent.js',
 
   componentProps: {
     dataHook: storySettings.dataHook,
@@ -458,7 +508,7 @@ export default {
 };
 
 ",
-  "stories/MyNewComponent/storySettings.js": "import { Category } from '../storiesHierarchy';
+  "stories/components/MyNewComponent/storySettings.js": "import { Category } from '../../storiesHierarchy';
 
 export const storySettings = {
   category: Category.COMPONENTS,
@@ -523,6 +573,7 @@ import styles from './MyTestComponent.scss';
 import Text from '../Text';
 import Button from '../Button';
 
+
 class MyTestComponent extends React.PureComponent {
   static displayName = 'MyTestComponent';
 
@@ -558,7 +609,10 @@ class MyTestComponent extends React.PureComponent {
         </Text>
 
         <div className={styles.button}>
-          <Button onClick={this._handleClick} dataHook=\\"myTestComponent-button\\">
+          <Button
+            onClick={this._handleClick}
+            dataHook=\\"myTestComponent-button\\"
+          >
             {buttonText}
           </Button>
         </div>
@@ -604,7 +658,9 @@ import MyTestComponent from './MyTestComponent';
 import { myTestComponentPrivateDriverFactory } from './MyTestComponent.private.uni.driver';
 
 describe('MyTestComponent', () => {
-  const createDriver = createUniDriverFactory(myTestComponentPrivateDriverFactory);
+  const createDriver = createUniDriverFactory(
+    myTestComponentPrivateDriverFactory,
+  );
 
   it('should render', async () => {
     const driver = createDriver(<MyTestComponent />);
@@ -625,12 +681,13 @@ describe('MyTestComponent', () => {
   });
 
   it('should allow changing the button text', async () => {
-    const driver = createDriver(<MyTestComponent buttonText=\\"Press me\\" />);
+    const driver = createDriver(
+      <MyTestComponent buttonText=\\"Press me\\" />,
+    );
 
     expect(await driver.getButtonText()).toEqual('Press me');
   });
 });
-
 ",
   "src/MyTestComponent/MyTestComponent.uni.driver.js": "import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 
@@ -639,29 +696,48 @@ export const myTestComponentDriverFactory = base => {
     ...baseUniDriverFactory(base),
 
     /** Get the current count */
-    getCountText: async () => base.$('[data-hook=\\"myTestComponent-count\\"]').text(),
+    getCountText: async () =>
+      base.$('[data-hook=\\"myTestComponent-count\\"]').text(),
 
     /** Click the button */
-    clickButton: async () => base.$('[data-hook=\\"myTestComponent-button\\"]').click(),
+    clickButton: async () =>
+      base.$('[data-hook=\\"myTestComponent-button\\"]').click(),
 
     /** Get the button's text */
-    getButtonText: async () => base.$('[data-hook=\\"myTestComponent-button\\"]').text(),
+    getButtonText: async () =>
+      base.$('[data-hook=\\"myTestComponent-button\\"]').text(),
   };
 };
 ",
   "src/MyTestComponent/index.js": "export { default } from './MyTestComponent.js';
 ",
-  "stories/MyTestComponent/index.story.js": "import React from 'react';
+  "stories/components/MyTestComponent/MyTestComponentTestStories.js": "import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { getTestStoryKind } from '../../storiesHierarchy';
 import { storySettings } from './storySettings';
 
-import MyTestComponent from '../../src/MyTestComponent';
+import MyTestComponent from '../../../src/MyTestComponent';
+
+const TestStories = storiesOf(getTestStoryKind(storySettings), module);
+
+TestStories.add('Test One', () => (
+  <MyTestComponent
+    dataHook=\\"story-my-test-component-test-one\\"
+    buttonText=\\"Press me for a surprise\\"
+  />
+));
+",
+  "stories/components/MyTestComponent/index.story.js": "import React from 'react';
+import { storySettings } from './storySettings';
+
+import MyTestComponent from '../../../src/MyTestComponent';
 
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
 
   component: MyTestComponent,
-  componentPath: '../../src/MyTestComponent/MyTestComponent.js',
+  componentPath: '../../../src/MyTestComponent/MyTestComponent.js',
 
   componentProps: {
     dataHook: storySettings.dataHook,
@@ -678,13 +754,12 @@ export default {
       <MyTestComponent
         dataHook=\\"story-my-test-component-live-example\\"
         buttonText=\\"Press me for a surprise\\"
-        />
+      />
     </div>
   ),
 };
-
 ",
-  "stories/MyTestComponent/storySettings.js": "import { TESTS_PREFIX } from '../storiesHierarchy';
+  "stories/components/MyTestComponent/storySettings.js": "import { TESTS_PREFIX } from '../../storiesHierarchy';
 
 export const storySettings = {
   category: TESTS_PREFIX,

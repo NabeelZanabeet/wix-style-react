@@ -6,7 +6,12 @@ module.exports = answers => {
 
   return {
     ...answers,
-
+    descriptionJSDoc:
+      answers.description === undefined
+        ? ''
+        : `/**
+ * ${answers.description}
+ */`,
     componentName,
     'component-name': componentNameSnake,
   };
