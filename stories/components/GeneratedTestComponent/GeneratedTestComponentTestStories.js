@@ -6,9 +6,9 @@ import { storySettings } from './storySettings';
 import GeneratedTestComponent from '../../../src/GeneratedTestComponent';
 
 const TestStories = storiesOf(getTestStoryKind(storySettings), module);
-const { testStories: stories, dataHook } = storySettings;
+const { testStoryNames, dataHook } = storySettings;
 
-TestStories.add(stories.DEFAULT, () => (
+TestStories.add(testStoryNames.DEFAULT, () => (
   <GeneratedTestComponent
     dataHook={dataHook}
     buttonText="Press me for a surprise"

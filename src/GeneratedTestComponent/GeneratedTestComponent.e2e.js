@@ -11,14 +11,16 @@ import { storySettings } from '../../stories/components/GeneratedTestComponent/s
 const eyes = eyesItInstance();
 
 describe('GeneratedTestComponent', () => {
-  const stories = storySettings.testStories;
-
-  const createStoryUrl = testName =>
+  
+  const createStoryUrl = testName => {
+    const {category, storyName} = storySettings;
+    
     createTestStoryUrl({
-      category: storySettings.category,
-      storyName: storySettings.storyName,
+      category,
+      storyName,
       testName: testName,
     });
+  }
 
   const createDriver = async (dataHook = storySettings.dataHook) => {
     const driver = generatedTestComponentTestkitFactory({ dataHook });
@@ -33,8 +35,10 @@ describe('GeneratedTestComponent', () => {
     return driver;
   };
 
+  const testStoryNames = storySettings.testStoryNames;
+
   eyes.it('should increase count when button clicked', async () => {
-    await browser.get(createStoryUrl(stories.DEFAULT));
+    await browser.get(createStoryUrl(testStoryNames.DEFAULT));
     const driver = await createDriver();
     await driver.clickButton();
     expect(await driver.getCountText()).toBe('You clicked this button 1 times');
