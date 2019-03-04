@@ -15,16 +15,15 @@ import { storySettings } from '../../stories/components/MyNewComponent/storySett
 const eyes = eyesItInstance();
 
 describe('MyNewComponent', () => {
-  
   const createStoryUrl = testName => {
-    const {category, storyName} = storySettings;
-    
+    const { category, storyName } = storySettings;
+
     createTestStoryUrl({
       category,
       storyName,
-      testName: testName,
+      testName,
     });
-  }
+  };
 
   const createDriver = async (dataHook = storySettings.dataHook) => {
     const driver = myNewComponentTestkitFactory({ dataHook });
@@ -258,7 +257,7 @@ export const storySettings = {
   storyName: 'MyNewComponent',
   dataHook: 'story-my-new-component',
   testStoryNames: {
-    DEFAULT: 'Render With Defaults',
+    DEFAULT: 'Default',
   },
 };
 ",
@@ -280,16 +279,15 @@ import { storySettings } from '../../stories/components/MyNewComponent/storySett
 const eyes = eyesItInstance();
 
 describe('MyNewComponent', () => {
-  
   const createStoryUrl = testName => {
-    const {category, storyName} = storySettings;
-    
+    const { category, storyName } = storySettings;
+
     createTestStoryUrl({
       category,
       storyName,
-      testName: testName,
+      testName,
     });
-  }
+  };
 
   const createDriver = async (dataHook = storySettings.dataHook) => {
     const driver = myNewComponentTestkitFactory({ dataHook });
@@ -525,7 +523,7 @@ export const storySettings = {
   storyName: 'MyNewComponent',
   dataHook: 'story-my-new-component',
   testStoryNames: {
-    DEFAULT: 'Render With Defaults',
+    DEFAULT: 'Default',
   },
 };
 ",
@@ -547,16 +545,15 @@ import { storySettings } from '../../stories/components/MyTestComponent/storySet
 const eyes = eyesItInstance();
 
 describe('MyTestComponent', () => {
-  
   const createStoryUrl = testName => {
-    const {category, storyName} = storySettings;
-    
+    const { category, storyName } = storySettings;
+
     createTestStoryUrl({
       category,
       storyName,
-      testName: testName,
+      testName,
     });
-  }
+  };
 
   const createDriver = async (dataHook = storySettings.dataHook) => {
     const driver = myTestComponentTestkitFactory({ dataHook });
@@ -782,7 +779,7 @@ export const storySettings = {
   storyName: 'MyTestComponent',
   dataHook: 'story-my-test-component',
   testStoryNames: {
-    DEFAULT: 'Render With Defaults',
+    DEFAULT: 'Default',
   },
 };
 ",
