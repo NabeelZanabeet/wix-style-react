@@ -5,6 +5,6 @@ export const storySettings = {
   storyName: '{%ComponentName%}',
   dataHook: 'story-{%component-name%}',
   testStoryNames: {
-    DEFAULT: 'Render With Defaults',
+    DEFAULT: 'Default',
   },
 };
