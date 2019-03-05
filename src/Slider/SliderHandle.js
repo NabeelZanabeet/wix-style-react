@@ -51,15 +51,15 @@ export default class SliderHandle extends Component {
   }
 
   toggleTooltip(showTooltip) {
-    const { displayTooltip } = this.props;
-    this.setState({ showTooltip: displayTooltip && showTooltip });
+    const { displayTooltip, disabled } = this.props;
+    this.setState({ showTooltip: displayTooltip && !disabled && showTooltip });
   }
 
   render() {
-    const { disabled } = this.props;
+    const { disabled, rtl } = this.props;
     return (
       <div
-        className={styles.handler}
+        {...styles('handler', { disabled })}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         onMouseDown={this.handleMouseDown}
@@ -72,7 +72,7 @@ export default class SliderHandle extends Component {
             {this.props.value}
           </div>
         )}
-        <div {...styles('dot', { disabled })} />
+        <div {...styles('dot', { disabled, rtl })} />
       </div>
     );
   }

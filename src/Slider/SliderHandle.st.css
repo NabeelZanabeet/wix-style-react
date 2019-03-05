@@ -10,6 +10,7 @@
 
 
 .handler {
+  -st-states: disabled;
   position: absolute;
   margin-left: -7px;
   margin-top: -5px;
@@ -22,16 +23,17 @@
   box-shadow: value(shadow10);
 }
 
-.handler:hover {
+.handler:not(:disabled):hover {
   box-shadow: 0 1px 2px 2px rgba(138, 209, 250, 0.58);
 }
 
-.handler:active {
+.handler:not(:disabled):active {
   box-shadow: 0 1px 2px 2px rgba(138, 209, 250, 0.58);
 }
+
 
 .dot {
-  -st-states: disabled;
+  -st-states: disabled, rtl;
   border-radius: 50%;
   background-color: value(B00);
   opacity: 0.7;
@@ -44,6 +46,11 @@
 .dot:disabled {
   background-color: value(D55);
 }
+
+.dot:rtl {
+  margin-right: 3px;
+}
+
 
 .tooltip {
   position: absolute;

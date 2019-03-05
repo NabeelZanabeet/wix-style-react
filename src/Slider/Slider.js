@@ -57,12 +57,14 @@ export default class Slider extends Component {
       onAfterChange,
       allowCross,
       disabled,
+      rtl,
     } = this.props;
     return (
       <Slide.Range
         handle={props => (
           <SliderHandle
             key={props.index}
+            rtl={rtl}
             displayTooltip={displayTooltip}
             disabled={disabled}
             {...props}
@@ -73,6 +75,7 @@ export default class Slider extends Component {
         value={value}
         marks={marks}
         step={step}
+        disabled={disabled}
         pushable={pushable}
         onChange={onChange}
         onAfterChange={onAfterChange}
@@ -91,12 +94,14 @@ export default class Slider extends Component {
       onChange,
       onAfterChange,
       disabled,
+      rtl,
     } = this.props;
     return (
       <Slide
         handle={props => (
           <SliderHandle
             key={props.index}
+            rtl={rtl}
             displayTooltip={displayTooltip}
             disabled={disabled}
             {...props}
@@ -107,6 +112,7 @@ export default class Slider extends Component {
         value={Array.isArray(value) ? value[0] : value}
         marks={this.props.displayMarks ? this.getMarks() : {}}
         step={step}
+        disabled={disabled}
         onChange={onChange}
         onAfterChange={onAfterChange}
       />

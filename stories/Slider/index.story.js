@@ -79,9 +79,25 @@ export default {
               source: examples.plainExample,
             },
             {
+              title: 'Marks under',
+              text: 'Slider supports showing marking values under the slider.',
+              source: examples.plainSliderMarks,
+            },
+            {
               title: 'Multi Value',
               text: 'Usually used for user to select the range.',
               source: examples.rangeSlider,
+            },
+            {
+              title: 'Pushable Handlers',
+              text:
+                'Allow pushing of surrounding handles when moving a handle.',
+              source: examples.rangeSliderPushable,
+            },
+            {
+              title: 'States',
+              text: 'Slider supports `disabled` state.',
+              source: examples.states,
             },
           ].map(example),
         ],

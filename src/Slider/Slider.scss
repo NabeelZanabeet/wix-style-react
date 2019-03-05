@@ -38,4 +38,14 @@
     position: relative;
     margin-top: 14px;
   }
+
+  :global(.rc-slider-disabled) {
+    background-color: transparent;
+  }
+  :global(.rc-slider-disabled .rc-slider-rail) {
+    background-color: $D60;
+  }
+  :global(.rc-slider-disabled .rc-slider-track) {
+    background-color: $D55;
+  }
 }
