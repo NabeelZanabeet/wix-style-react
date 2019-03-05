@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './SliderHandle.scss';
+import { withFocusable } from 'wix-ui-core/dist/src/hocs/Focusable/FocusableHOC';
 
 import styles from './SliderHandle.st.css';
 
-export default class SliderHandle extends Component {
+class SliderHandle extends Component {
   constructor(props) {
     super(props);
 
@@ -56,10 +56,12 @@ export default class SliderHandle extends Component {
   }
 
   render() {
-    const { disabled, rtl } = this.props;
+    const { disabled, rtl, focusableOnFocus, focusableOnBlur } = this.props;
     return (
       <div
-        {...styles('handler', { disabled })}
+        {...styles('root', { disabled })}
+        onBlur={focusableOnBlur}
+        onFocus={focusableOnFocus}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         onMouseDown={this.handleMouseDown}
@@ -88,3 +90,5 @@ SliderHandle.propTypes = {
 SliderHandle.defaultProps = {
   displayTooltip: true,
 };
+
+export default withFocusable(SliderHandle);
