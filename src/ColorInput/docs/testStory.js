@@ -2,11 +2,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { getTestStoryKind } from '../storiesHierarchy';
+import { getTestStoryKind } from '../../../stories/storiesHierarchy';
 import { storySettings, testStories } from './storySettings';
 
-import ColorInput from '../../src/ColorInput';
-import { Layout, Cell } from '../../src/Layout';
+import ColorInput from '../ColorInput';
+import { Layout, Cell } from '../../Layout';
 
 const kind = getTestStoryKind(storySettings);
 

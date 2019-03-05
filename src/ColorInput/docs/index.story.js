@@ -13,12 +13,12 @@ import {
   code as baseLiveCode,
 } from 'wix-storybook-utils/Sections';
 
-import testkit from '!raw-loader!./README.TESTKIT.md';
-import ColorInput from 'wix-style-react/ColorInput';
-import { placements } from 'wix-style-react/Popover';
-import { baseScope } from '../utils/Components/LiveCodeExample';
+import testkit from './README.TESTKIT.md';
+import ColorInput from '..';
+import { placements } from '../../Popover';
+import { baseScope } from '../../../stories/utils/Components/LiveCodeExample';
 
-import usage from '!raw-loader!./Usage.md';
+import usage from './Usage.md';
 import * as examples from './examples';
 
 const liveCode = config => baseLiveCode({ components: baseScope, ...config });
@@ -33,7 +33,7 @@ export default {
   storyName: storySettings.storyName,
 
   component: ColorInput,
-  componentPath: '../../src/ColorInput/ColorInput.js',
+  componentPath: '../ColorInput.js',
 
   componentProps: setState => ({
     value: '',
