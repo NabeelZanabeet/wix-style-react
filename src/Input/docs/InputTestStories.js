@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { getTestStoryKind, Category } from '../storiesHierarchy';
+import { getTestStoryKind, Category } from '../../../stories/storiesHierarchy';
 
-import Input from '../../src/Input';
-import Search from '../../src/new-icons/Search';
+import Input from '..';
+import { Search } from 'wix-ui-icons-common';
 
 const defaultProps = {
   value: 'Some text value...',

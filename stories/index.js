@@ -120,7 +120,7 @@ import './GenericModalLayout/GenericModalLayout.story.js';
 import './GoogleAddressInput/index.story.js';
 import './components/Grid';
 import './Heading/index.story';
-import './Input/index.story';
+import '../src/Input/docs/index.story';
 import './InputArea/index.story.js';
 import './Layout/index.story.js';
 import './Layout';
@@ -145,7 +145,7 @@ import './Builders/ContactItemBuilder';
 
 // Tests
 import './Typography/TypographyTestStories';
-import './Input/InputTestStories';
+import '../src/Input/docs/InputTestStories';
 import './TimeInput/testStory';
 import './components/Page/PageTestStories.js'; // Tests/2. Layout/2.5 + Page/
 import './components/Page/PageTestStoriesDeprecated.js'; // Tests/2. Layout/2.5 + Page/Deprecated
