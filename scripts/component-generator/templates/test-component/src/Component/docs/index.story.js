@@ -17,11 +17,11 @@ import {
 import { storySettings } from './storySettings';
 import { baseScope } from '../../../stories/utils/Components/LiveCodeExample';
 
-import GeneratedTestComponent from '..';
+import {%ComponentName%} from '..';
 
 const code = config =>
   baseCode({
-    components: { ...baseScope, GeneratedTestComponent },
+    components: { ...baseScope, {%ComponentName%} },
     compact: true,
     ...config,
   });
@@ -30,7 +30,7 @@ export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
 
-  component: GeneratedTestComponent,
+  component: {%ComponentName%},
   componentPath: '..',
 
   componentProps: {
@@ -45,7 +45,7 @@ export default {
 
   sections: [
     header({
-      component: <GeneratedTestComponent/>,
+      component: <{%ComponentName%}/>,
       issueUrl: 'https://github.com/wix/wix-style-react/issues/new',
     }),
 
@@ -62,15 +62,15 @@ export default {
 
           columns([
             importExample({
-              source: "import GeneratedTestComponent from 'wix-style-react/GeneratedTestComponent';",
+              source: "import {%ComponentName%} from 'wix-style-react/{%ComponentName%}';",
             }),
           ]),
 
           title('Examples'),
 
           code({
-            source: `<GeneratedTestComponent
-  dataHook="story-generated-test-component-live-example"
+            source: `<{%ComponentName%}
+  dataHook="story-{%component-name%}-live-example"
   buttonText="Press me for a surprise"
 />`
           }),

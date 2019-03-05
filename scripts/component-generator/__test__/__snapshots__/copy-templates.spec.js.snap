@@ -10,7 +10,7 @@ Object {
 
 import { eyesItInstance } from '../../test/utils/eyes-it';
 import { myNewComponentTestkitFactory } from '../../testkit/protractor';
-import { storySettings } from '../../stories/MyNewComponent/storySettings';
+import { storySettings } from './docs/storySettings';
 
 const eyes = eyesItInstance();
 
@@ -179,20 +179,32 @@ export const myNewComponentDriverFactory = base => {
   };
 };
 ",
-  "src/MyNewComponent/index.js": "export { default } from './MyNewComponent.js';
-",
-  "stories/MyNewComponent/index.story.js": "import React from 'react';
-import { storySettings } from './storySettings';
-import LiveCodeExample from '../utils/Components/LiveCodeExample';
+  "src/MyNewComponent/docs/index.story.js": "import React from 'react';
 
-import MyNewComponent from '../../src/MyNewComponent';
+import {
+  header,
+  tabs,
+  tab,
+  importExample,
+  title,
+  description,
+  code as baseCode
+} from 'wix-storybook-utils/Sections';
+
+import { storySettings } from './storySettings';
+import { baseScope } from '../../../stories/utils/Components/LiveCodeExample';
+
+import MyNewComponent from '..';
+
+const code = config =>
+  baseCode({ components: baseScope, compact: true, ...config });
 
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
 
   component: MyNewComponent,
-  componentPath: '../../src/MyNewComponent/MyNewComponent.js',
+  componentPath: '..',
 
   componentProps: {
     dataHook: storySettings.dataHook,
@@ -204,24 +216,50 @@ export default {
     // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
   },
 
-  examples: (
-    <div style={{ maxWidth: 627 }}>
-      <LiveCodeExample
-        compact
-        title=\\"Live code example\\"
-        initialCode={\`
-<MyNewComponent
+  sections: [
+    header({
+      component: <MyNewComponent/>,
+      issueUrl: 'https://github.com/wix/wix-style-react/issues/new',
+    }),
+
+    tabs([
+      tab({
+        title: 'Description',
+        sections: [
+          columns([
+            description({
+              title: 'Description',
+              text: 'Short text about component',
+            }),
+          ]),
+
+          columns([
+            importExample({
+              source: \\"import MyNewComponent from 'wix-style-react/MyNewComponent';\\",
+            }),
+          ]),
+
+          title('Examples'),
+
+          code({
+            source: \`<MyNewComponent
   dataHook=\\"story-my-new-component-live-example\\"
   buttonText=\\"Press me for a surprise\\"
-  />
-        \`}
-      />
-    </div>
-  ),
-};
+/>\`
+          }),
+        ]
+      }),
 
+      ...[
+        { title: 'API', sections: [api()] },
+        { title: 'Testkit', sections: [testkit()] },
+        { title: 'Playground', sections: [playground()] }
+      ].map(tab)
+    ])
+  ]
+};
 ",
-  "stories/MyNewComponent/storySettings.js": "import { Category } from '../storiesHierarchy';
+  "src/MyNewComponent/docs/storySettings.js": "import { Category } from '../storiesHierarchy';
 
 export const storySettings = {
   category: Category.COMPONENTS,
@@ -229,6 +267,8 @@ export const storySettings = {
   storyName: 'MyNewComponent',
   dataHook: 'story-my-new-component',
 };
+",
+  "src/MyNewComponent/index.js": "export { default } from './MyNewComponent.js';
 ",
 }
 `;
@@ -243,7 +283,7 @@ Object {
 
 import { eyesItInstance } from '../../test/utils/eyes-it';
 import { myNewComponentTestkitFactory } from '../../testkit/protractor';
-import { storySettings } from '../../stories/MyNewComponent/storySettings';
+import { storySettings } from './docs/storySettings';
 
 const eyes = eyesItInstance();
 
@@ -416,20 +456,32 @@ export const myNewComponentDriverFactory = base => {
 
 > This is a very cool component, ya'll
 ",
-  "src/MyNewComponent/index.js": "export { default } from './MyNewComponent.js';
-",
-  "stories/MyNewComponent/index.story.js": "import React from 'react';
-import { storySettings } from './storySettings';
-import LiveCodeExample from '../utils/Components/LiveCodeExample';
+  "src/MyNewComponent/docs/index.story.js": "import React from 'react';
 
-import MyNewComponent from '../../src/MyNewComponent';
+import {
+  header,
+  tabs,
+  tab,
+  importExample,
+  title,
+  description,
+  code as baseCode
+} from 'wix-storybook-utils/Sections';
+
+import { storySettings } from './storySettings';
+import { baseScope } from '../../../stories/utils/Components/LiveCodeExample';
+
+import MyNewComponent from '..';
+
+const code = config =>
+  baseCode({ components: baseScope, compact: true, ...config });
 
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
 
   component: MyNewComponent,
-  componentPath: '../../src/MyNewComponent/MyNewComponent.js',
+  componentPath: '..',
 
   componentProps: {
     dataHook: storySettings.dataHook,
@@ -441,24 +493,50 @@ export default {
     // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
   },
 
-  examples: (
-    <div style={{ maxWidth: 627 }}>
-      <LiveCodeExample
-        compact
-        title=\\"Live code example\\"
-        initialCode={\`
-<MyNewComponent
+  sections: [
+    header({
+      component: <MyNewComponent/>,
+      issueUrl: 'https://github.com/wix/wix-style-react/issues/new',
+    }),
+
+    tabs([
+      tab({
+        title: 'Description',
+        sections: [
+          columns([
+            description({
+              title: 'Description',
+              text: 'Short text about component',
+            }),
+          ]),
+
+          columns([
+            importExample({
+              source: \\"import MyNewComponent from 'wix-style-react/MyNewComponent';\\",
+            }),
+          ]),
+
+          title('Examples'),
+
+          code({
+            source: \`<MyNewComponent
   dataHook=\\"story-my-new-component-live-example\\"
   buttonText=\\"Press me for a surprise\\"
-  />
-        \`}
-      />
-    </div>
-  ),
-};
+/>\`
+          }),
+        ]
+      }),
 
+      ...[
+        { title: 'API', sections: [api()] },
+        { title: 'Testkit', sections: [testkit()] },
+        { title: 'Playground', sections: [playground()] }
+      ].map(tab)
+    ])
+  ]
+};
 ",
-  "stories/MyNewComponent/storySettings.js": "import { Category } from '../storiesHierarchy';
+  "src/MyNewComponent/docs/storySettings.js": "import { Category } from '../storiesHierarchy';
 
 export const storySettings = {
   category: Category.COMPONENTS,
@@ -466,6 +544,8 @@ export const storySettings = {
   storyName: 'MyNewComponent',
   dataHook: 'story-my-new-component',
 };
+",
+  "src/MyNewComponent/index.js": "export { default } from './MyNewComponent.js';
 ",
 }
 `;
@@ -480,7 +560,7 @@ Object {
 
 import { eyesItInstance } from '../../test/utils/eyes-it';
 import { myTestComponentTestkitFactory } from '../../testkit/protractor';
-import { storySettings } from '../../stories/MyTestComponent/storySettings';
+import { storySettings } from './docs/storySettings';
 
 const eyes = eyesItInstance();
 

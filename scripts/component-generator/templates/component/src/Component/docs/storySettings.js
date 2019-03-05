@@ -1,7 +1,8 @@
-import { TESTS_PREFIX } from '../storiesHierarchy';
+import { Category } from '../../../stories/storiesHierarchy';
 
 export const storySettings = {
-  category: TESTS_PREFIX,
+  category: Category.COMPONENTS,
+
   storyName: '{%ComponentName%}',
   dataHook: 'story-{%component-name%}',
 };

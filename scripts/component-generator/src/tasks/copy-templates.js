@@ -18,8 +18,8 @@ const createFileMap = ({ ComponentName, description, testComponent }) => {
     // If `testComponent === true`, we won't generate a story for now
     ...(!testComponent
       ? [
-          'stories/Component/storySettings.js',
-          'stories/Component/index.story.js',
+          'src/Component/docs/storySettings.js',
+          'src/Component/docs/index.story.js',
         ]
       : []),
 
@@ -69,12 +69,12 @@ module.exports = async answers => {
   if (answers.testComponent) {
     await copyTemplates(
       {
-        'stories/Component/storySettings.js': `stories/${
+        'src/Component/docs/storySettings.js': `src/${
           answers.ComponentName
-        }/storySettings.js`,
-        'stories/Component/index.story.js': `stories/${
+        }/docs/storySettings.js`,
+        'src/Component/docs/index.story.js': `src/${
           answers.ComponentName
-        }/index.story.js`,
+        }/docs/index.story.js`,
       },
       valuesMap,
       'test-component',
