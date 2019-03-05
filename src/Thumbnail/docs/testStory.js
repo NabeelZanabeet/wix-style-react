@@ -2,10 +2,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { getTestStoryKind } from '../storiesHierarchy';
+import { getTestStoryKind } from '../../../stories/storiesHierarchy';
 import { storySettings, testStories } from './storySettings';
-import Thumbnail from 'wix-style-react/Thumbnail';
-import { Layout, Cell } from 'wix-style-react/Layout';
+import Thumbnail from '../Thumbnail';
+import { Layout, Cell } from '../../Layout';
 import { getImageUrl } from './examples';
 
 const kind = getTestStoryKind(storySettings);

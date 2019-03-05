@@ -132,7 +132,7 @@ import './Proportion/index.story.js';
 import './RichTextArea/api.story';
 import './Skeleton.story.js';
 import './Text/index.story';
-import './Thumbnail/index.story';
+import '../src/Thumbnail/docs/index.story';
 
 // Styling
 import './Typography/TypographyClassesStory';
@@ -162,7 +162,7 @@ import './TableToolbar/ToolbarTestStory'; // Tests/10. Table
 import './Tag/TagTestStory'; // Tests/12. Other/12.5 Tag
 import './Avatar/AvatarTestStory'; // Tests/12. Other/12.6 Avatar
 import './Box/testStory';
-import './Thumbnail/testStory';
+import '../src/Thumbnail/docs/testStory';
 import './EditableSelector/testStory';
 import './Slider/testStory'; // 4.7 Slider
 import './StatsWidget/testStory'; // 2.7 StatsWidget

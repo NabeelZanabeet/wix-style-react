@@ -9,12 +9,12 @@ import {
   code,
 } from 'wix-storybook-utils/Sections';
 
-import Thumbnail from 'wix-style-react/Thumbnail';
-import { Layout, Cell } from 'wix-style-react/Layout';
+import Thumbnail from '../Thumbnail';
+import { Layout, Cell } from '../../Layout';
 
 import * as examples from './examples';
 import exampleControlled from '!raw-loader!./exampleControlled';
-import thumbnailReadme from '!raw-loader!../../src/Thumbnail/README.md';
+import thumbnailReadme from '../README.md';
 
 const sizes = [{ value: 100, label: '100' }, { value: 300, label: '300' }];
 
@@ -23,7 +23,7 @@ export default {
   storyName: storySettings.storyName,
 
   component: Thumbnail,
-  componentPath: '../../src/Thumbnail/Thumbnail.js',
+  componentPath: '../Thumbnail.js',
 
   componentProps: (setState, getState) => ({
     dataHook: storySettings.dataHook,
