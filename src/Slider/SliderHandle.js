@@ -59,9 +59,10 @@ class SliderHandle extends Component {
     const { disabled, rtl, focusableOnFocus, focusableOnBlur } = this.props;
     return (
       <div
-        {...styles('root', { disabled })}
+        {...styles('root', { disabled }, this.props)}
         onBlur={focusableOnBlur}
         onFocus={focusableOnFocus}
+        tabIndex="0"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         onMouseDown={this.handleMouseDown}
