@@ -28,7 +28,7 @@ class SliderWithState extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: [2,4,6],
+      value: [2,4],
     };
     this.change = this.change.bind(this);
   }
@@ -78,7 +78,7 @@ class SliderWithState extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: [2,4,6],
+      value: [3,4,5],
     };
     this.change = this.change.bind(this);
   }

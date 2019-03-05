@@ -25,9 +25,29 @@ const liveCode = config =>
     ...config,
   });
 
-const example = ({ title, text, source }) =>
-  columns([description({ title, text }), liveCode({ source })]);
+const example = ({ source, ...rest }) =>
+  columns([description({ ...rest }), liveCode({ source })]);
 
+class SlideWithState extends React.Component {
+  state = {
+    value: 4,
+  };
+
+  change = value => this.setState({ value });
+
+  render() {
+    return (
+      <div style={{ width: '50%', padding: '10px' }}>
+        <Slider
+          onChange={this.change}
+          value={this.state.value}
+          displayMarks={false}
+          displayTooltip={false}
+        />
+      </div>
+    );
+  }
+}
 export default {
   category: '4. Selection',
   storyName: '4.7 Slider',
@@ -37,17 +57,7 @@ export default {
 
   sections: [
     header({
-      component: (
-        <div style={{ width: '50%', padding: '10px' }}>
-          <Slider
-            onChange={() => {}}
-            value={4}
-            displayMarks={false}
-            displayTooltip={false}
-          />
-        </div>
-      ),
-
+      component: <SlideWithState />,
       issueUrl: 'https://github.com/wix/wix-style-react/issues/new',
     }),
 

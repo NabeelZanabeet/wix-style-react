@@ -44,92 +44,53 @@ export default class Slider extends Component {
     }, {});
   }
 
-  renderRanger() {
-    const marks = this.props.displayMarks ? this.getMarks() : {};
-    const {
-      displayTooltip,
-      min,
-      max,
-      value,
-      step,
-      pushable,
-      onChange,
-      onAfterChange,
-      allowCross,
-      disabled,
-      rtl,
-    } = this.props;
+  renderHandle = props => {
+    const { rtl, displayTooltip, disabled } = this.props;
     return (
-      <Slide.Range
-        handle={props => (
-          <SliderHandle
-            key={props.index}
-            rtl={rtl}
-            displayTooltip={displayTooltip}
-            disabled={disabled}
-            {...props}
-          />
-        )}
-        min={min}
-        max={max}
-        value={value}
-        marks={marks}
-        step={step}
+      <SliderHandle
+        key={props.index}
+        rtl={rtl}
+        displayTooltip={displayTooltip}
         disabled={disabled}
-        pushable={pushable}
-        onChange={onChange}
-        onAfterChange={onAfterChange}
-        allowCross={allowCross}
+        {...props}
       />
     );
-  }
+  };
 
-  renderSlider() {
+  renderSlider = () => {
     const {
-      displayTooltip,
-      min,
-      max,
+      pushable,
+      allowCross,
       value,
-      step,
-      onChange,
-      onAfterChange,
-      disabled,
-      rtl,
+      displayMarks,
+      dataHook,
+      id,
+      ...rest
     } = this.props;
-    return (
+    return Array.isArray(value) && value.length > 1 ? (
+      <Slide.Range
+        {...rest}
+        handle={this.renderHandle}
+        marks={displayMarks ? this.getMarks() : {}}
+        value={value}
+        pushable={pushable}
+        allowCros={allowCross}
+      />
+    ) : (
       <Slide
-        handle={props => (
-          <SliderHandle
-            key={props.index}
-            rtl={rtl}
-            displayTooltip={displayTooltip}
-            disabled={disabled}
-            {...props}
-          />
-        )}
-        min={min}
-        max={max}
+        {...rest}
+        handle={this.renderHandle}
+        marks={displayMarks ? this.getMarks() : {}}
         value={Array.isArray(value) ? value[0] : value}
-        marks={this.props.displayMarks ? this.getMarks() : {}}
-        step={step}
-        disabled={disabled}
-        onChange={onChange}
-        onAfterChange={onAfterChange}
       />
     );
-  }
+  };
 
   render() {
-    const { dataHook, value } = this.props;
+    const { dataHook, id } = this.props;
     return (
-      <div
-        className={classNames('wix-slider', { rtl: this.props.rtl })}
-        id={this.props.id}
-        data-hook={dataHook}
-      >
-        {Array.isArray(value) && value.length > 1
-          ? this.renderRanger()
-          : this.renderSlider()}
+      <div className={classNames('wix-slider')} id={id} data-hook={dataHook}>
+        {this.renderSlider()}
       </div>
     );
   }
