@@ -4,7 +4,7 @@ import InteractiveCodeExample from 'wix-storybook-utils/InteractiveCodeExample';
 import Markdown from 'wix-storybook-utils/Markdown';
 import Readme from '../README.md';
 import ExampleStandard from './ExampleStandard';
-import storySettings from './StorySettings';
+import storySettings from './storySettings';
 import RangeTemplate from './RangeTemplate';
 
 // Use fixed date for DatePicker in order for eyes comparisons not to fail.

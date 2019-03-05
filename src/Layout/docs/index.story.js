@@ -4,7 +4,7 @@ import React from 'react';
 import { Layout, Cell } from '..';
 
 import styles from './styles.scss';
-import storySettings from './story-settings';
+import storySettings from './storySettings';
 
 const GreyBox = ({ children, height }) => (
   <div className={styles.greyBox} style={{ height }} children={children} />

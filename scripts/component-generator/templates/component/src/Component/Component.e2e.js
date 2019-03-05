@@ -6,7 +6,7 @@ import {
 
 import { eyesItInstance } from '../../test/utils/eyes-it';
 import { {%componentName%}TestkitFactory } from '../../testkit/protractor';
-import { storySettings } from '../../stories/{%ComponentName%}/storySettings';
+import { storySettings } from './docs/storySettings';
 
 const eyes = eyesItInstance();
 

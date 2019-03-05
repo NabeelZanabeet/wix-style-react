@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
-import storySettings from './story-settings';
+import storySettings from './storySettings';
 
 import ListOfCards from './examples/ListOfCards';
 import ListOfCardsRaw from '!raw-loader!./examples/ListOfCards';

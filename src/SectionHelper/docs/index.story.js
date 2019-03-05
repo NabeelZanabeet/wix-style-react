@@ -1,5 +1,5 @@
 import SectionHelper from '..';
-import { storybookConfig } from './storybookConfig';
+import { storySettings } from './storySettings';
 
 const titleExamples = [
   { label: 'short text', value: 'Look at this important message!' },
@@ -24,8 +24,8 @@ const childrenExamples = [
 ];
 
 export default {
-  category: storybookConfig.category,
-  storyName: storybookConfig.storyName,
+  category: storySettings.category,
+  storySettingsName: storySettings.storySettingsName,
 
   component: SectionHelper,
   componentPath: '..',
