@@ -48,7 +48,7 @@ import './CheckBox/index.story.js'; // 4.2 Checkbox
 import './RadioGroup.story.js'; // 4.3 RadioGroup
 import './ToggleSwitch/index.story'; // 4.4 ToggleSwitch
 import './SegmentedToggle/index.story'; // 4.5 SegmentedToggle
-import './Slider/index.story'; // 4.7 Slider
+import '../src/Slider/docs/index.story'; // 4.7 Slider
 import './ColorInput/index.story'; // 4.8 ColorInput
 
 // 5. Buttons
@@ -164,7 +164,7 @@ import './Avatar/AvatarTestStory'; // Tests/12. Other/12.6 Avatar
 import './Box/testStory';
 import './Thumbnail/testStory';
 import './EditableSelector/testStory';
-import './Slider/testStory'; // 4.7 Slider
+import '../src/Slider/docs/testStory'; // 4.7 Slider
 import './StatsWidget/testStory'; // 2.7 StatsWidget
 import './SegmentedToggle/testStory'; // 4.5 SegmentedToggle
 import './FloatingNotification/FloatingNotificationTestStory'; // 8.2 FloatingNotification

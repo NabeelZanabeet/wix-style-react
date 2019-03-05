@@ -13,10 +13,10 @@ import {
   playground,
   code as baseLiveCode,
 } from 'wix-storybook-utils/Sections';
-import { baseScope } from '../utils/Components/LiveCodeExample';
+import { baseScope } from '../../../stories/utils/Components/LiveCodeExample';
 import * as examples from './examples';
 
-import Slider from 'wix-style-react/Slider';
+import Slider from '..';
 
 const liveCode = config =>
   baseLiveCode({
@@ -53,7 +53,7 @@ export default {
   storyName: '4.7 Slider',
 
   component: Slider,
-  componentPath: '../../src/Slider',
+  componentPath: '../',
 
   sections: [
     header({
