@@ -28,13 +28,17 @@ storiesOf(kind, module).add(testStories.slider, () => (
     <Layout gap={'60px'}>
       <Cell>
         Single handle
-        <ControlledSlider value={[3]} min={1} max={10} />
+        <ControlledSlider
+          dataHook={storySettings.dataHook}
+          value={3}
+          min={1}
+          max={10}
+        />
       </Cell>
       <Cell>
         Multiple handles
         <ControlledSlider
           dataHook={`${storySettings.dataHook}-multiple`}
-          pushable={1}
           value={[3, 4, 5]}
           min={1}
           max={10}
