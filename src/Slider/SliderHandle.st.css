@@ -38,11 +38,9 @@
 }
 
 .root:focus-visible {
-  box-shadow: 0 0 0 3px value(F00);
+  box-shadow: 0 0 0 2px value(F00);
   z-index: 2;
 }
-
-
 
 .dot {
   -st-states: disabled, rtl, focused;
