@@ -45,7 +45,7 @@ storiesOf(kind, module).add(testStories.slider, () => (
         />
       </Cell>
       <Cell>
-        Multiple handles
+        Disabled
         <ControlledSlider value={3} min={1} max={10} disabled />
       </Cell>
     </Layout>
