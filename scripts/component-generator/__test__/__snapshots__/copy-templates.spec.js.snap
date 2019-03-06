@@ -186,9 +186,13 @@ import {
   tabs,
   tab,
   importExample,
+  columns,
   title,
   description,
-  code as baseCode
+  code as baseCode,
+  api,
+  testkit,
+  playground
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from './storySettings';
@@ -197,7 +201,12 @@ import { baseScope } from '../../../stories/utils/Components/LiveCodeExample';
 import MyNewComponent from '..';
 
 const code = config =>
-  baseCode({ components: baseScope, compact: true, ...config });
+  baseCode({
+    components: { ...baseScope, MyNewComponent },
+    compact: true,
+    ...config,
+  });
+
 
 export default {
   category: storySettings.category,
@@ -259,7 +268,7 @@ export default {
   ]
 };
 ",
-  "src/MyNewComponent/docs/storySettings.js": "import { Category } from '../storiesHierarchy';
+  "src/MyNewComponent/docs/storySettings.js": "import { Category } from '../../../stories/storiesHierarchy';
 
 export const storySettings = {
   category: Category.COMPONENTS,
@@ -463,9 +472,13 @@ import {
   tabs,
   tab,
   importExample,
+  columns,
   title,
   description,
-  code as baseCode
+  code as baseCode,
+  api,
+  testkit,
+  playground
 } from 'wix-storybook-utils/Sections';
 
 import { storySettings } from './storySettings';
@@ -474,7 +487,12 @@ import { baseScope } from '../../../stories/utils/Components/LiveCodeExample';
 import MyNewComponent from '..';
 
 const code = config =>
-  baseCode({ components: baseScope, compact: true, ...config });
+  baseCode({
+    components: { ...baseScope, MyNewComponent },
+    compact: true,
+    ...config,
+  });
+
 
 export default {
   category: storySettings.category,
@@ -536,7 +554,7 @@ export default {
   ]
 };
 ",
-  "src/MyNewComponent/docs/storySettings.js": "import { Category } from '../storiesHierarchy';
+  "src/MyNewComponent/docs/storySettings.js": "import { Category } from '../../../stories/storiesHierarchy';
 
 export const storySettings = {
   category: Category.COMPONENTS,
@@ -729,19 +747,40 @@ export const myTestComponentDriverFactory = base => {
   };
 };
 ",
-  "src/MyTestComponent/index.js": "export { default } from './MyTestComponent.js';
-",
-  "stories/MyTestComponent/index.story.js": "import React from 'react';
-import { storySettings } from './storySettings';
+  "src/MyTestComponent/docs/index.story.js": "import React from 'react';
 
-import MyTestComponent from '../../src/MyTestComponent';
+import {
+  header,
+  tabs,
+  tab,
+  importExample,
+  columns,
+  title,
+  description,
+  code as baseCode,
+  api,
+  testkit,
+  playground
+} from 'wix-storybook-utils/Sections';
+
+import { storySettings } from './storySettings';
+import { baseScope } from '../../../stories/utils/Components/LiveCodeExample';
+
+import MyTestComponent from '..';
+
+const code = config =>
+  baseCode({
+    components: { ...baseScope, MyTestComponent },
+    compact: true,
+    ...config,
+  });
 
 export default {
   category: storySettings.category,
   storyName: storySettings.storyName,
 
   component: MyTestComponent,
-  componentPath: '../../src/MyTestComponent/MyTestComponent.js',
+  componentPath: '..',
 
   componentProps: {
     dataHook: storySettings.dataHook,
@@ -753,24 +792,58 @@ export default {
     // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
   },
 
-  examples: (
-    <div style={{ maxWidth: 627 }}>
-      <MyTestComponent
-        dataHook=\\"story-my-test-component-live-example\\"
-        buttonText=\\"Press me for a surprise\\"
-        />
-    </div>
-  ),
-};
+  sections: [
+    header({
+      component: <MyTestComponent/>,
+      issueUrl: 'https://github.com/wix/wix-style-react/issues/new',
+    }),
 
+    tabs([
+      tab({
+        title: 'Description',
+        sections: [
+          columns([
+            description({
+              title: 'Description',
+              text: 'Short text about component',
+            }),
+          ]),
+
+          columns([
+            importExample({
+              source: \\"import MyTestComponent from 'wix-style-react/MyTestComponent';\\",
+            }),
+          ]),
+
+          title('Examples'),
+
+          code({
+            source: \`<MyTestComponent
+  dataHook=\\"story-my-test-component-live-example\\"
+  buttonText=\\"Press me for a surprise\\"
+/>\`
+          }),
+        ]
+      }),
+
+      ...[
+        { title: 'API', sections: [api()] },
+        { title: 'Testkit', sections: [testkit()] },
+        { title: 'Playground', sections: [playground()] }
+      ].map(tab)
+    ])
+  ]
+};
 ",
-  "stories/MyTestComponent/storySettings.js": "import { TESTS_PREFIX } from '../storiesHierarchy';
+  "src/MyTestComponent/docs/storySettings.js": "import { TESTS_PREFIX } from '../../../stories/storiesHierarchy';
 
 export const storySettings = {
   category: TESTS_PREFIX,
   storyName: 'MyTestComponent',
   dataHook: 'story-my-test-component',
 };
+",
+  "src/MyTestComponent/index.js": "export { default } from './MyTestComponent.js';
 ",
 }
 `;
